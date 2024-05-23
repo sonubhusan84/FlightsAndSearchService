@@ -5,10 +5,9 @@ const setupAndStartServer = async() =>{
     const app = express();
     app.use(bodyparser.json());
     app.use(bodyparser.urlencoded({extended: true}));
-    app.listen(PORT,() => {
+    app.listen(PORT,async () => {
         console.log(`The server is running on port ${PORT}`);
         //console.log(process.env); 
-
     })
 }
 
