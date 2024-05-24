@@ -14,9 +14,41 @@ remove the PORT variable from index.js file and add it to .env file according to
 ->Insdie config/config.json delete test and production and enter your password ("insdie this") and database name(here = Flights_Searches_DB_DEV)
 inside config->config.json delete test and production 
 next change the directory to src
-->npx sequelize db:create
+->"npx sequelize db:create"
 ->now go to cmd ->mysql --version(if not seen download it) ->mysql -u root -p
 ->password = Sonumonu@944
 show databases;(you can find filgts_Searches_db_dev)
 ->We need tio gitignore the file config.json as it contains password and other sensitive information.So, go to .gitignore and src/config/config.json
-->
+
+========== models chapter ==========
+##### DB Design ######
+    - Airplane Table
+    - Flight
+    - Airport
+    - City
+
+
+ ->A flight belongs to an airplane but once airplane can be used in multiple flights
+ ->A city has mant airports but one airport belong to a city
+ ->One airport can have many flights,but a flight belong to one airport
+
+
+$$$$ go to src in gitbash
+->npx seqelize model:generate --name City --atributes name:String
+   ->npx sequelize db:migrate "the apply the changes in the database"
+     ->go to cmd & "mysql -u root -p" "Sonumonu944"
+       ->use Flights_Search_DB_DEV
+         ->show tables; 
+           ->select * from SequelizeMeta;
+             ->desc Cities;
+               ->git status -> cd .. -> git add . ->git commint -m "Added city model and migrations"
+                 -> git push origin master
+    ->npx sequelize db:migrate:undo  "it will go back to the initial state or previous state"
+      ->show tables;  "you can't find anything here which means you went to previous state"
+        
+
+->create city-repository.js in repository folder
+->check city-repository
+->git add .
+->git commit -m "Added unique constraint and started city-repository"
+                   
