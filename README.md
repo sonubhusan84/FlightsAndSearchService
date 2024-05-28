@@ -61,3 +61,29 @@ $$$$ go to src in gitbash
 ->create routes folder -> inside it create a index.js file and v1 folder.
 ->inside v1 folder create index.js
 ->go to /flightsandsearch/index.js file and define Apiroutes.
+
+->search sequelize like query
+
+
+##### Tables #####
+
+### City -> id,name,created_at,updated_at
+
+### Airport -> id,name,address,city_id,created_at,updated_at
+    Realationship ->City has many airports and Airport belong to a city (one to many)
+
+
+->we will create a new model Airport,go inside src
+->npx sequelize model:generate --name Airport --attributes name:String ,address:String,cityId:Integer
+->do changes in city.js and aiport.js "associate functions" and do changes airport migrations  (you can check about associations in sequelize     documentation)
+->do changes in airport and city migrate file in cityId field
+->npx sequelize db:migrate
+
+-> npx sequelize seed:generate --name add-airports
+->seeders -> airports and add the data in the bulkInsert function
+->npx sequelize db:seed:all
+->select * from airports;
+->select * from Airports Join Cities onAirports.cityId = Cities.id where Cities.id = 9;
+
+
+->learn about model synchronization
