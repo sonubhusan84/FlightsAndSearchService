@@ -26,18 +26,18 @@ const setupAndStartServer = async() =>{
         //console.log(process.env);
         // const repo = new CityRepository();
         // repo.createCity({name:"new delhi"});
-        const city = await City.findOne({
-            where: {
-                id: 7
-            }
-        });
-        const airports = await city.getAirports()
-        console.log(city,airports);
-        await Airplane.create({
-            modelNumber: "Boeing 878",
-            createdAt : new Date(),
-            updatedAt: new Date()
-        })
+        // const city = await City.findOne({
+        //     where: {
+        //         id: 7
+        //     }
+        // });
+        // const airports = await city.getAirports()
+        // console.log(city,airports);
+        // await Airplane.create({
+        //     modelNumber: "Boeing 878",
+        //     createdAt : new Date(),
+        //     updatedAt: new Date()
+        // })
     })
 }
 

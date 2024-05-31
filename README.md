@@ -78,12 +78,52 @@ $$$$ go to src in gitbash
 ->do changes in city.js and aiport.js "associate functions" and do changes airport migrations  (you can check about associations in sequelize     documentation)
 ->do changes in airport and city migrate file in cityId field
 ->npx sequelize db:migrate
+->do git commit
 
 -> npx sequelize seed:generate --name add-airports
-->seeders -> airports and add the data in the bulkInsert function
+->seeders -> add-airports.js and add the data in the bulkInsert function
 ->npx sequelize db:seed:all
 ->select * from airports;
 ->select * from Airports Join Cities onAirports.cityId = Cities.id where Cities.id = 9;
 
 
-->learn about model synchronization
+->learn about model/db synchronization
+->db.sequelize.sync({alter: true});
+
+=========== Creating Aeroplane model ================
+->npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:integer inside src
+->make changes in model and migration of Airplane
+->npx sequelize db:migrate
+npx sequelize seed:generate --name add-airplanes
+->npx sequelie db:seed:all
+
+
+
+======== creating flights =========
+
+->npx sequelize model:generate --name Flights --attributes flightNumber:String,airplaneId:integer,departureAirportId:integer,arrivalAirportId:integer,arrivalTime:Date,departureTime:Date,price:integer,boardingGate:String,totalSeats:integer
+->do changes in model and migration
+->npx sequelize db:migrate
+->do git
+-> creating CRUD for flights and airplane
+
+=> repository -> flight-repository & -> airplane-repository
+->utils -> helper.js
+
+
+========= Implementing Crud Repositry ==========
+
+->repository -> crud-repository
+->airport-reposirtory
+->crud-service.js
+->airport-service.js
+->airport_controller.js
+->middleware->flight-middlewares.js
+->utils error-codes.js
+
+
+
+
+
+
+
