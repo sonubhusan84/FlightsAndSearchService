@@ -61,6 +61,26 @@ class FlightRepository{
             throw{error}
         }
     }
+    async updateFlights(flightId,data){
+        try{
+            await Flights.update(data,{
+                where:{
+                    id:flightId
+                }
+            })
+            return true;
+
+        }catch(error){
+            throw new AppError(
+                'RepositoryError',
+                'Cannot create Booking',
+                'there was some issue in updating the booking,please try again later',
+                StatusCodes.INTERNAL_SERVER_ERROR
+            );
+        }
+
+
+    }
 }
 
 module.exports = FlightRepository;
